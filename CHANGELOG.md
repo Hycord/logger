@@ -1,3 +1,7 @@
+## [3.0.1](https://github.com/hycord/logger/compare/v3.0.0...v3.0.1) (2022-10-20)
+
+
+
 # [3.0.0](https://github.com/hycord/logger/compare/v2.0.0...v3.0.0) (2022-10-20)
 
 
