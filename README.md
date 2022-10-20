@@ -1,30 +1,17 @@
 ## Setup Guide
 
-### Dependencies
-
-- [**Node.js v13.2+**](https://nodejs.org/) (v14+ highly recommended)
-
-### Preparing a new project
-
-#### The easy way: GitHub Templates
-
-[This project](https://github.com/bscotch/typescript-template) is set up as a GitHub template.
-
-1. Click the "Use this Template" button on the project homepage to create your own
-   remote repo with everything here. Follow the prompts.
-2. On your local machine, use GitHub Desktop to clone the repo, or
-   navigate to the parent folder where you want to keep your
-   local repo copy and run `git clone git@github.com:hycordia/typescript-template.git`.
+1.  On your local machine, use GitHub Desktop to clone the repo, or
+    navigate to the parent folder where you want to keep your
+    local repo copy and run `git clone git@github.com:hycord/logger.git`.
 
 #### The hard way: All CLI, all the time
 
 1. Create a new remote repo on your host (e.g. GitHub, BitBucket, GitLab, etc.)
 2. Go to the local parent folder into which you want to put your new Typescript project
    (via your file explorer or a terminal)
-3. Clone this repo locally: `git clone --branch dev git@github.com:hycordia/typescript-template.git`
-4. Rename the folder containing this repo (`typescript-template`) to your project's name
-5. Go to your new local repo (via a Git GUI or a terminal (with `cd your-new-name`))
-6. (Optional) If you don't want the git history from this template to be included in your project's history:
+3. Clone this repo locally: `git clone --branch dev git@github.com:hycord/logger.git`
+4. Go to your new local repo (via a Git GUI or a terminal (with `cd logger`))
+5. (Optional) If you don't want the git history from this template to be included in your project's history:
 - 6a. Delete the `.git` folder
 - 6b. Run `git init` (or use a Git GUI to initialize the repo)
 9. Change the remote to your own remote repository: `git remote set-url origin your-remote-url` (or, if you initialized a new repo, add your remote with `git remote add origin your-remote-url`)
@@ -34,20 +21,6 @@
 1. Run `npm install` to install all dependencies
 2. (Optional) Run `npm outdated` to see if any dependencies have major updates.
 3. (Optional) Run `npm update` to get those dependencies up to date with minor updates.
-4. Update the `package.json` with your project's details
-   - Set the `name` field. If you are going to publish to npm, this will be the name of your package. Must be a URL-friendly name. Best practice is to use kebab-case (all lower-case, alphanumeric and dashes).
-   - Set the `description` field.
-   - Set the `repository` field to your remote git repo's URL.
-   - Set the `homepage` field (your remote git repo's URL works fine for this).
-   - Add any `keywords` strings. If you publish to npm, these will be used by searches.
-   - Remove the `private` field **if you want to publish to npm**.
-   - If you do not want to publish to npm, remove `&& npm publish` from the `scripts.postversion` script.
-5. Check the `.gitignore` and add any filetypes or folders you want to keep out of your repo.
-6. Remove any stuff from the template that you don't care about. (You can do this at any time.)
-7. Open up the `./tsconfig.json` file to see if you want to change anything. Pay particular attention to the `paths` section!
-8. Commit all your changes: `git add -A; git commit`
-9. Push your commit: `git push`
-
 ### Begin coding!
 
 - Your entrypoint is `./src/index.ts`, so start there!
@@ -55,41 +28,6 @@
 - To compile, run `npm run build`
 - To auto-recompile while you code, run `npm run build:dev`
 - Sample folders and files for types and your code library are placed in `src/lib` and `src/types`.
-- If you intend to use the `fs-extra` module for anything in your non-test code,
-  move it from the `devDependencies` to the `dependencies` section of your `package.json`.
-
-### Creating a CLI (Command Line Interface)
-
-This template project comes with the [commander module](https://www.npmjs.com/package/commander),
-which is great for rapidly building command line interfaces
-(uninstall it with `npm uninstall commander` if you don't need to make a CLI).
-
-To create a CLI that will become available when someone installs your npm package:
-
-- Rename `src/cli/cli.ts` to `src/cli/your-main-cli-name.ts`. This is the entrypoint
-  for your CLI.
-- Name any subcommand files to `src/cli/your-main-cli-name-subcommand.ts`.
-  Update the CLI entrypoint to use the same subcommand names.
-  Subcommand scripts _must_ start with the same name as your main CLI script,
-  and _must_ end with an exact command name listed by its parent script
-  (one of the `cli.command()` values).
-- Modify the CLI templates to do whatever it's all supposed to do.
-- To make `your-cli-command` available to users who install your
-  npm package, add the `bin` field to your `package.json`, like so:
-  ```jsonc
-  {
-    //... other root package.json options
-    "bin": {
-      "your-cli-command": "build/cli/your-main-cli-name.js"
-    }
-  }
-  ```
-
-Test your CLI locally by running `node build/cli/your-main-cli-name.js -h`.
-
-If you publish your project as an npm module, users who install it will be able
-to run `npx your-cli-command` in their terminals, or simply `your-cli-command`
-if they've done a global install of your module (with `npm install --global your-module-name`).
 
 ### Testing
 
