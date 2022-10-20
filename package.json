@@ -1,7 +1,10 @@
 {
   "name": "@ignhycord/logger",
   "description": "A custom logger used for Hycord's Projects",
-  "repository": "https://github.com/hycord/logger",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hycord/logger.git"
+  },
   "homepage": "https://github.com/hycord/logger",
   "author": "Hycord <hycord@hycordia.com>",
   "keywords": [
@@ -49,5 +52,9 @@
     "source-map-support": "^0.5.19",
     "tsc-alias": "^1.2.11",
     "typescript": "next"
+  },
+  "types": "./build/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/hycord/logger/issues"
   }
 }
