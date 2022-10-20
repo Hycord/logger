@@ -24,6 +24,7 @@ export default class Logger {
   dataColor = chalk.hex('#f4017e');
 
   error(message: any, title: string) {
+    if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
     this.log(
       `${this.errorColor(
         `[${this.errorStyle(
@@ -33,6 +34,7 @@ export default class Logger {
     );
   }
   warn(message: any, title: string) {
+    if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
     this.log(
       `${this.warningColor(
         `[${this.warningStyle(
@@ -43,6 +45,7 @@ export default class Logger {
   }
 
   success(message: any, title: string) {
+    if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
     this.log(
       `${this.successColor(
         `[${this.successStyle(
@@ -52,6 +55,7 @@ export default class Logger {
     );
   }
   data(message: any, title: string) {
+    if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
     this.log(
       `${this.dataColor(
         `[${title && title.length > 0 ? title.toUpperCase() : `DATA`}]`,

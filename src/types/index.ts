@@ -5,3 +5,5 @@
  * be compiled -- if you need to deliver your types to consumers
  * of a published npm module use the '.ts' extension instead.
  */
+
+export type date = unknown;
