@@ -11,7 +11,11 @@ export default class Logger {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
 
-  log([color = chalk, style = chalk]: Chalk[], title = 'LOG', message: string) {
+  _log(
+    [color = chalk, style = chalk]: Chalk[],
+    title = 'LOG',
+    message: string,
+  ) {
     if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
     console.log(
       `${color(
@@ -20,19 +24,23 @@ export default class Logger {
     );
   }
 
+  log(message: string, title = 'log') {
+    this._log([], title, message);
+  }
+
   error(message: string, title = 'error') {
-    this.log([chalk.hex('#ff1a1a'), chalk.bold.underline], title, message);
+    this._log([chalk.hex('#ff1a1a'), chalk.bold.underline], title, message);
   }
 
   warn(message: string, title = 'warn') {
-    this.log([chalk.hex('#F5A623'), chalk.underline], title, message);
+    this._log([chalk.hex('#F5A623'), chalk.underline], title, message);
   }
 
   success(message: string, title = 'success') {
-    this.log([chalk.hex('#29ff89'), chalk.bold], title, message);
+    this._log([chalk.hex('#29ff89'), chalk.bold], title, message);
   }
 
   data(message: string, title = 'data') {
-    this.log([chalk.hex('#f4017e')], title, message);
+    this._log([chalk.hex('#f4017e')], title, message);
   }
 }

@@ -1,3 +1,41 @@
+# Usage
+
+```javascript
+const Logger = require('@ignhycord/logger');
+const logger = new Logger();
+
+// The following code produxes the image below
+logger.log('Log, Default Title');
+logger.log('Log, Custom Title', 'Custom Title');
+logger.log('Log, Date title', 'date');
+logger.data('Data, Default Title');
+logger.data('Data, Custom Title', 'Custom Title');
+logger.data('Data, Date title', 'date');
+logger.success('Success, Default Title');
+logger.success('Success, Custom Title', 'Custom Title');
+logger.success('Success, Date title', 'date');
+logger.error('Error, Default Title');
+logger.error('Error, Custom Title', 'Custom Title');
+logger.error('Error, Date title', 'date');
+logger.warn('Warn, Default Title');
+logger.warn('Warn, Custom Title', 'Custom Title');
+logger.warn('Warn, Date title', 'date');
+```
+
+![Example Logging](/public/example.png?raw=true 'Example Logging')
+
+## Customization
+
+You may also use `logger._log()` to pass a custom title and colors to the logger. The function is defined as follows, where the first array is an array of chalk style options (I.E. `chalk.bold`) and the first array is applied to the brackets and title, while the second is just applied to the title.:
+
+```ts
+_log(
+    [color = chalk, style = chalk]: Chalk[],
+    title = 'LOG',
+    message: string,
+  )
+```
+
 ## Setup Guide
 
 1.  On your local machine, use GitHub Desktop to clone the repo, or
@@ -12,8 +50,10 @@
 3. Clone this repo locally: `git clone --branch dev git@github.com:hycord/logger.git`
 4. Go to your new local repo (via a Git GUI or a terminal (with `cd logger`))
 5. (Optional) If you don't want the git history from this template to be included in your project's history:
+
 - 6a. Delete the `.git` folder
 - 6b. Run `git init` (or use a Git GUI to initialize the repo)
+
 9. Change the remote to your own remote repository: `git remote set-url origin your-remote-url` (or, if you initialized a new repo, add your remote with `git remote add origin your-remote-url`)
 
 #### Customize the template
@@ -21,6 +61,7 @@
 1. Run `npm install` to install all dependencies
 2. (Optional) Run `npm outdated` to see if any dependencies have major updates.
 3. (Optional) Run `npm update` to get those dependencies up to date with minor updates.
+
 ### Begin coding!
 
 - Your entrypoint is `./src/index.ts`, so start there!

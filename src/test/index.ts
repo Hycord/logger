@@ -36,6 +36,9 @@ function resetSandbox() {
 
 const logger = new Logger();
 
+logger.log('Log, Default Title');
+logger.log('Log, Custom Title', 'Custom Title');
+logger.log('Log, Date title', 'date');
 logger.data('Data, Default Title');
 logger.data('Data, Custom Title', 'Custom Title');
 logger.data('Data, Date title', 'date');
@@ -48,6 +51,8 @@ logger.error('Error, Date title', 'date');
 logger.warn('Warn, Default Title');
 logger.warn('Warn, Custom Title', 'Custom Title');
 logger.warn('Warn, Date title', 'date');
+
+
 
 // describe("Test Suite", function () {
 
