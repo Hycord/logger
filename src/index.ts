@@ -11,13 +11,13 @@ export default class Logger {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
 
-  log(
-    [color = chalk.reset, style = chalk.reset]: Chalk[],
-    title = 'LOG',
-    message: string,
-  ) {
+  log([color = chalk, style = chalk]: Chalk[], title = 'LOG', message: string) {
     if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
-    console.log(`${color('[' + style(title) + ']')} ${message}`);
+    console.log(
+      `${color(
+        chalk.bold('[') + style(title.toUpperCase()) + chalk.bold(']'),
+      )} ${message}`,
+    );
   }
 
   error(message: string, title = 'error') {

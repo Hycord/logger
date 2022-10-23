@@ -34,6 +34,21 @@ function resetSandbox() {
   fs.copySync(samplesRoot, sandboxRoot);
 }
 
+const logger = new Logger();
+
+logger.data('Data, Default Title');
+logger.data('Data, Custom Title', 'Custom Title');
+logger.data('Data, Date title', 'date');
+logger.success('Success, Default Title');
+logger.success('Success, Custom Title', 'Custom Title');
+logger.success('Success, Date title', 'date');
+logger.error('Error, Default Title');
+logger.error('Error, Custom Title', 'Custom Title');
+logger.error('Error, Date title', 'date');
+logger.warn('Warn, Default Title');
+logger.warn('Warn, Custom Title', 'Custom Title');
+logger.warn('Warn, Date title', 'date');
+
 // describe("Test Suite", function () {
 
 //   before(function(){
