@@ -52,8 +52,6 @@ logger.warn('Warn, Default Title');
 logger.warn('Warn, Custom Title', 'Custom Title');
 logger.warn('Warn, Date title', 'date');
 
-
-
 // describe("Test Suite", function () {
 
 //   before(function(){
