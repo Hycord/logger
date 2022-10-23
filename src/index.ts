@@ -6,60 +6,33 @@
  * whatever is exported here is what they'll get.
  * For small projects you could put all your code right in this file.
  */
-import chalk from 'chalk';
+import chalk, { Chalk } from 'chalk';
 export default class Logger {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
 
-  log(message: any) {
-    console.log(message);
+  log(
+    [color = chalk.reset, style = chalk.reset]: Chalk[],
+    title = 'LOG',
+    message: string,
+  ) {
+    if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
+    console.log(`${color('[' + style(title) + ']')} ${message}`);
   }
 
-  warningColor = chalk.hex('#F5A623');
-  warningStyle = chalk.underline;
-  successColor = chalk.hex('#29ff89');
-  successStyle = chalk.bold;
-  errorColor = chalk.red;
-  errorStyle = chalk.bold.underline;
-  dataColor = chalk.hex('#f4017e');
-
-  error(message: any, title: string) {
-    if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
-    this.log(
-      `${this.errorColor(
-        `[${this.errorStyle(
-          title && title.length > 0 ? title.toUpperCase() : `ERROR`,
-        )}]`,
-      )}: ${message}`,
-    );
-  }
-  warn(message: any, title: string) {
-    if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
-    this.log(
-      `${this.warningColor(
-        `[${this.warningStyle(
-          title && title.length > 0 ? title.toUpperCase() : `WARN`,
-        )}]`,
-      )}: ${message}`,
-    );
+  error(message: string, title = 'error') {
+    this.log([chalk.hex('#ff1a1a'), chalk.bold.underline], title, message);
   }
 
-  success(message: any, title: string) {
-    if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
-    this.log(
-      `${this.successColor(
-        `[${this.successStyle(
-          title && title.length > 0 ? title.toUpperCase() : `SUCCESS`,
-        )}]`,
-      )}: ${message}`,
-    );
+  warn(message: string, title = 'warn') {
+    this.log([chalk.hex('#F5A623'), chalk.underline], title, message);
   }
-  data(message: any, title: string) {
-    if (title.toLowerCase() === 'date') title = new Date().toLocaleString();
-    this.log(
-      `${this.dataColor(
-        `[${title && title.length > 0 ? title.toUpperCase() : `DATA`}]`,
-      )}: ${message}`,
-    );
+
+  success(message: string, title = 'success') {
+    this.log([chalk.hex('#29ff89'), chalk.bold], title, message);
+  }
+
+  data(message: string, title = 'data') {
+    this.log([chalk.hex('#f4017e')], title, message);
   }
 }
